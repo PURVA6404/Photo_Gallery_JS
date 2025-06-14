@@ -1,0 +1,75 @@
+{
+  "albums": [
+    {
+      "id": "nature",
+      "name": "Nature",
+      "description": "Beautiful landscapes and wildlife"
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "description": "Urban and architectural photography"
+    },
+    {
+      "id": "people",
+      "name": "People",
+      "description": "Portraits and street photography"
+    }
+  ],
+  "photos": [
+    {
+      "id": "1",
+      "title": "Mountain Lake",
+      "description": "Serene mountain lake at sunset",
+      "albumId": "nature",
+      "tags": ["mountains", "lake", "sunset"],
+      "url": "https://picsum.photos/id/1018/800/600",
+      "thumbnail": "https://picsum.photos/id/1018/400/300"
+    },
+    {
+      "id": "2",
+      "title": "Modern Building",
+      "description": "Contemporary architecture with glass facade",
+      "albumId": "architecture",
+      "tags": ["building", "modern", "urban"],
+      "url": "https://picsum.photos/id/1029/800/600",
+      "thumbnail": "https://picsum.photos/id/1029/400/300"
+    },
+    {
+      "id": "3",
+      "title": "Portrait",
+      "description": "Portrait of a young woman",
+      "albumId": "people",
+      "tags": ["portrait", "woman", "model"],
+      "url": "https://picsum.photos/id/1027/800/600",
+      "thumbnail": "https://picsum.photos/id/1027/400/300"
+    },
+    {
+      "id": "4",
+      "title": "Forest Path",
+      "description": "Misty forest path in the morning",
+      "albumId": "nature",
+      "tags": ["forest", "path", "mist"],
+      "url": "https://picsum.photos/id/1043/800/600",
+      "thumbnail": "https://picsum.photos/id/1043/400/300"
+    },
+    {
+      "id": "5",
+      "title": "City Skyline",
+      "description": "Urban skyline at night",
+      "albumId": "architecture",
+      "tags": ["city", "night", "skyline"],
+      "url": "https://picsum.photos/id/1033/800/600",
+      "thumbnail": "https://picsum.photos/id/1033/400/300"
+    },
+    {
+      "id": "6",
+      "title": "Street Life",
+      "description": "Candid street photography",
+      "albumId": "people",
+      "tags": ["street", "candid", "urban"],
+      "url": "https://picsum.photos/id/1035/800/600",
+      "thumbnail": "https://picsum.photos/id/1035/400/300"
+    }
+  ]
+} 

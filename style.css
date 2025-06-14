@@ -1,0 +1,497 @@
+/* Reset default styles and use border-box for better sizing control */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Center the carousel vertically and horizontally on the page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container wrapper - sets maximum width and adds margin for smaller screens */
+.carousel-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 20px;
+}
+
+/* Main carousel component - handles overflow and provides positioning context */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Track that holds all slides - enables smooth horizontal sliding */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 400px;
+}
+
+/* Individual slide styling */
+.carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+/* Image styling to ensure proper fit and scaling */
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Navigation button styling */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 2;
+}
+
+/* Button hover effect */
+.carousel-button:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Position buttons on left and right sides */
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Dot indicators container */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+/* Individual dot styling */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Active dot state */
+.dot.active {
+    background: white;
+}
+
+/* Responsive design for tablets */
+@media (max-width: 768px) {
+    .carousel-container {
+        margin: 0 10px;
+    }
+
+    .carousel-track {
+        height: 300px;
+    }
+
+    .carousel-button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 480px) {
+    .carousel-track {
+        height: 200px;
+    }
+
+    .carousel-button {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+/* Gallery container with responsive padding */
+.gallery-container {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0 clamp(1rem, 5vw, 2rem);
+    width: 100%;
+}
+
+/* Responsive search bar */
+.search-bar {
+    width: 100%;
+    padding: clamp(0.75rem, 2vw, 1rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #0066cc;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    transform: scale(1.01);
+}
+
+/* Responsive albums container */
+.albums-container {
+    display: flex;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scroll-snap-type: x mandatory;
+}
+
+/* Improved scrollbar styling */
+.albums-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.albums-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.albums-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.album {
+    padding: clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.8rem, 2vw, 1.2rem);
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    scroll-snap-align: start;
+}
+
+.album:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.album.active {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+/* Responsive grid layout */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+/* Responsive photo items */
+.photo-item {
+    position: relative;
+    border-radius: clamp(8px, 1.5vw, 12px);
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.photo-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-color: #f0f0f0;
+}
+
+.photo-img.loaded {
+    opacity: 1;
+}
+
+.photo-item:hover .photo-img {
+    transform: scale(1.05);
+}
+
+.photo-info {
+    padding: clamp(0.75rem, 2vw, 1rem);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.photo-info h3 {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    line-height: 1.3;
+}
+
+.photo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.25rem, 1vw, 0.5rem);
+}
+
+.tag {
+    font-size: clamp(0.75rem, 1.2vw, 0.8rem);
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Lightbox styles */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    z-index: 1000;
+}
+
+.lightbox.active {
+    display: block;
+}
+
+.lightbox-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.lightbox-image {
+    max-width: min(95%, 1200px);
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: clamp(4px, 1vw, 8px);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(0.5rem, 1.5vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.lightbox-nav:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-nav.prev {
+    left: 1rem;
+}
+
+.lightbox-nav.next {
+    right: 1rem;
+}
+
+.lightbox-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: clamp(0.75rem, 2vw, 1rem);
+}
+
+.lightbox-info h3 {
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+.lightbox-info .tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+    .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        margin: 0.5rem auto;
+    }
+
+    .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+    }
+
+    .lightbox-nav {
+        padding: 0.5rem;
+    }
+
+    .lightbox-nav.prev {
+        left: 0.5rem;
+    }
+
+    .lightbox-nav.next {
+        right: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+        gap: 0.75rem;
+    }
+
+    .album {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+
+    .photo-info {
+        padding: 0.75rem;
+    }
+
+    .photo-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+    }
+
+    .lightbox-image {
+        max-width: 98%;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .photo-item:hover {
+        transform: none;
+    }
+
+    .photo-item:active {
+        transform: scale(0.98);
+    }
+
+    .album:hover {
+        transform: none;
+    }
+
+    .album:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+    }
+
+    .search-bar,
+    .photo-item,
+    .album {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #f5f5f5;
+    }
+
+    .search-bar:focus {
+        border-color: #3399ff;
+        box-shadow: 0 0 0 2px rgba(51, 153, 255, 0.2);
+    }
+
+    .album:hover {
+        background-color: #404040;
+    }
+
+    .tag {
+        background-color: #404040;
+        color: #d0d0d0;
+    }
+
+    .photo-img {
+        background-color: #2d2d2d;
+    }
+} 
